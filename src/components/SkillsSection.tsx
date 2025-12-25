@@ -19,28 +19,28 @@ export default function SkillsSection() {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section id="skills" className="relative py-24 bg-background overflow-hidden">
+    <section id="skills" className="relative py-16 sm:py-20 lg:py-24 bg-background overflow-hidden">
       {/* Grid Scan Background */}
       <GridScanBackground />
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         {/* Section Title */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="section-title"
+          className="section-title flex-col sm:flex-row"
         >
-          <span className="section-title-number font-display">03.</span>
-          <h2 className="font-display">Technologies & Tools</h2>
-          <div className="section-title-line"></div>
+          <span className="section-title-number font-display text-lg sm:text-xl lg:text-2xl">03.</span>
+          <h2 className="font-display text-xl sm:text-2xl lg:text-3xl">Technologies & Tools</h2>
+          <div className="section-title-line hidden sm:block"></div>
         </motion.div>
 
         {/* Technologies Grid */}
         <div
           ref={ref}
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 justify-items-center mt-12"
+          className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-5 gap-3 sm:gap-4 lg:gap-6 justify-items-center mt-8 sm:mt-12"
         >
           {technologies.map((tech, index) => (
             <motion.div
@@ -53,13 +53,13 @@ export default function SkillsSection() {
                 ease: [0.25, 0.46, 0.45, 0.94],
               }}
               whileHover={{ scale: 1.1, y: -10 }}
-              className="w-[140px] h-[140px] bg-background-card rounded-2xl border border-primary/10 p-6 flex flex-col items-center justify-center cursor-pointer transition-all duration-300 hover:border-primary hover:shadow-[0_10px_30px_hsla(190,100%,50%,0.3)] group relative overflow-hidden"
+              className="w-[90px] h-[90px] sm:w-[110px] sm:h-[110px] lg:w-[140px] lg:h-[140px] bg-background-card rounded-xl sm:rounded-2xl border border-primary/10 p-3 sm:p-4 lg:p-6 flex flex-col items-center justify-center cursor-pointer transition-all duration-300 hover:border-primary hover:shadow-[0_10px_30px_hsla(190,100%,50%,0.3)] group relative overflow-hidden"
             >
               {/* Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
               {/* Icon */}
-              <div className="w-16 h-16 mb-3 relative z-10">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16 mb-2 sm:mb-3 relative z-10">
                 <img
                   src={tech.icon}
                   alt={tech.name}
@@ -68,7 +68,7 @@ export default function SkillsSection() {
               </div>
 
               {/* Name */}
-              <span className="text-sm font-semibold text-foreground text-center relative z-10">
+              <span className="text-[10px] sm:text-xs lg:text-sm font-semibold text-foreground text-center relative z-10">
                 {tech.name}
               </span>
             </motion.div>

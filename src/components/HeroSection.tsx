@@ -51,12 +51,12 @@ export default function HeroSection() {
       />
       
       {/* Content */}
-      <div className="container mx-auto px-6 py-32 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <div className="container mx-auto px-4 sm:px-6 py-20 sm:py-24 lg:py-32 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Left Column - Text */}
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8 text-center lg:text-left order-2 lg:order-1">
             {/* Glitch Title */}
-            <h1 className={`font-display text-4xl md:text-5xl lg:text-6xl font-black leading-tight ${isTypingComplete ? 'glitch-text' : ''}`}>
+            <h1 className={`font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-tight ${isTypingComplete ? 'glitch-text' : ''}`}>
               <span className="gradient-text-tri">
                 {displayedText}
                 {!isTypingComplete && <span className="typing-cursor"></span>}
@@ -64,63 +64,63 @@ export default function HeroSection() {
             </h1>
 
             {/* Subtitle */}
-            <p className="text-xl md:text-2xl text-foreground-secondary">
+            <p className="text-lg sm:text-xl md:text-2xl text-foreground-secondary">
               Building the Future with{' '}
               <span className="gradient-text font-bold">Me..</span>
             </p>
 
             {/* Description */}
-            <p className="text-foreground-muted text-lg">
+            <p className="text-foreground-muted text-sm sm:text-base lg:text-lg">
               Machine Learning • Deep Learning • Computer Vision • NLP
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-4">
               <button 
                 onClick={() => scrollToSection('projects')}
-                className="btn-primary"
+                className="btn-primary text-sm sm:text-base px-4 sm:px-6 py-2.5 sm:py-3"
               >
                 View Projects
               </button>
               <button 
                 onClick={() => scrollToSection('contact')}
-                className="btn-outline"
+                className="btn-outline text-sm sm:text-base px-4 sm:px-6 py-2.5 sm:py-3"
               >
                 Get In Touch
               </button>
             </div>
 
             {/* Social Icons */}
-            <div className="flex gap-4 pt-4">
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="social-icon group">
-                <Github className="w-5 h-5 text-foreground-secondary group-hover:text-primary transition-colors" />
+            <div className="flex justify-center lg:justify-start gap-3 sm:gap-4 pt-2 sm:pt-4">
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="social-icon group w-10 h-10 sm:w-12 sm:h-12">
+                <Github className="w-4 h-4 sm:w-5 sm:h-5 text-foreground-secondary group-hover:text-primary transition-colors" />
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon group">
-                <Linkedin className="w-5 h-5 text-foreground-secondary group-hover:text-primary transition-colors" />
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon group w-10 h-10 sm:w-12 sm:h-12">
+                <Linkedin className="w-4 h-4 sm:w-5 sm:h-5 text-foreground-secondary group-hover:text-primary transition-colors" />
               </a>
-              <a href="https://leetcode.com" target="_blank" rel="noopener noreferrer" className="social-icon group hover:shadow-[0_5px_20px_rgba(255,161,22,0.3)]">
-                <span className="text-foreground-secondary group-hover:text-[#FFA116] font-bold text-xs transition-colors">LC</span>
+              <a href="https://leetcode.com" target="_blank" rel="noopener noreferrer" className="social-icon group w-10 h-10 sm:w-12 sm:h-12 hover:shadow-[0_5px_20px_rgba(255,161,22,0.3)]">
+                <span className="text-foreground-secondary group-hover:text-[#FFA116] font-bold text-[10px] sm:text-xs transition-colors">LC</span>
               </a>
-              <a href="https://hackerrank.com" target="_blank" rel="noopener noreferrer" className="social-icon group hover:shadow-[0_5px_20px_rgba(0,234,100,0.3)]">
-                <span className="text-foreground-secondary group-hover:text-[#00EA64] font-bold text-xs transition-colors">HR</span>
+              <a href="https://hackerrank.com" target="_blank" rel="noopener noreferrer" className="social-icon group w-10 h-10 sm:w-12 sm:h-12 hover:shadow-[0_5px_20px_rgba(0,234,100,0.3)]">
+                <span className="text-foreground-secondary group-hover:text-[#00EA64] font-bold text-[10px] sm:text-xs transition-colors">HR</span>
               </a>
-              <a href="https://codility.com" target="_blank" rel="noopener noreferrer" className="social-icon group hover:shadow-[0_5px_20px_rgba(108,99,255,0.3)]">
-                <span className="text-foreground-secondary group-hover:text-[#6C63FF] font-bold text-xs transition-colors">CO</span>
+              <a href="https://codility.com" target="_blank" rel="noopener noreferrer" className="social-icon group w-10 h-10 sm:w-12 sm:h-12 hover:shadow-[0_5px_20px_rgba(108,99,255,0.3)]">
+                <span className="text-foreground-secondary group-hover:text-[#6C63FF] font-bold text-[10px] sm:text-xs transition-colors">CO</span>
               </a>
             </div>
           </div>
 
           {/* Right Column - 3D Cube */}
-          <div className="hidden lg:flex justify-center items-center">
+          <div className="hidden md:flex justify-center items-center order-1 lg:order-2">
             <RotatingCube />
           </div>
         </div>
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 scroll-indicator">
-        <div className="w-8 h-12 border-2 border-primary rounded-full flex justify-center p-2">
-          <div className="w-1 h-3 bg-primary rounded-full scroll-dot"></div>
+      <div className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 scroll-indicator hidden sm:block">
+        <div className="w-6 h-10 sm:w-8 sm:h-12 border-2 border-primary rounded-full flex justify-center p-1.5 sm:p-2">
+          <div className="w-1 h-2 sm:h-3 bg-primary rounded-full scroll-dot"></div>
         </div>
       </div>
     </section>

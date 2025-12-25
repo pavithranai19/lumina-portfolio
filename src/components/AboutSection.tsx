@@ -45,44 +45,44 @@ export default function AboutSection() {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section id="about" className="relative py-24 bg-background-dark">
-      <div className="container mx-auto px-6">
+    <section id="about" className="relative py-16 sm:py-20 lg:py-24 bg-background-dark">
+      <div className="container mx-auto px-4 sm:px-6">
         {/* Section Title */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="section-title"
+          className="section-title flex-col sm:flex-row"
         >
-          <span className="section-title-number font-display">01.</span>
-          <h2 className="font-display">About Me</h2>
-          <div className="section-title-line"></div>
+          <span className="section-title-number font-display text-lg sm:text-xl lg:text-2xl">01.</span>
+          <h2 className="font-display text-xl sm:text-2xl lg:text-3xl">About Me</h2>
+          <div className="section-title-line hidden sm:block"></div>
         </motion.div>
 
-        <div className="grid lg:grid-cols-[1.5fr_1fr] gap-16">
+        <div className="grid lg:grid-cols-[1.5fr_1fr] gap-8 lg:gap-16">
           {/* Left Column - Text */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="space-y-6"
+            className="space-y-4 sm:space-y-6"
           >
-            <p className="text-xl text-primary font-medium leading-relaxed">
+            <p className="text-base sm:text-lg lg:text-xl text-primary font-medium leading-relaxed">
               Hello! I'm a passionate AI enthusiast and aspiring Machine Learning Engineer with a strong foundation in artificial intelligence, deep learning, and data science.
             </p>
             
-            <p className="text-foreground-secondary leading-relaxed text-lg">
+            <p className="text-foreground-secondary leading-relaxed text-sm sm:text-base lg:text-lg">
               My journey in AI began with curiosity about how machines can learn and make decisions. Since then, I've been exploring various aspects of machine learning, from classical algorithms to cutting-edge deep learning architectures.
             </p>
             
-            <p className="text-foreground-secondary leading-relaxed text-lg">
+            <p className="text-foreground-secondary leading-relaxed text-sm sm:text-base lg:text-lg">
               I specialize in building intelligent systems using Python, TensorFlow, and PyTorch. My areas of interest include Computer Vision, Natural Language Processing, and Reinforcement Learning.
             </p>
 
             {/* Highlight Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mt-6 sm:mt-8">
               {highlights.map((item, index) => (
                 <motion.div
                   key={item.title}
@@ -90,11 +90,11 @@ export default function AboutSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
                   viewport={{ once: true }}
-                  className="bg-background-card p-6 rounded-xl border border-primary/20 text-center card-hover"
+                  className="bg-background-card p-4 sm:p-6 rounded-xl border border-primary/20 text-center card-hover"
                 >
-                  <span className="text-4xl mb-3 block">{item.icon}</span>
-                  <h3 className="text-primary font-semibold mb-2">{item.title}</h3>
-                  <p className="text-foreground-muted text-sm">{item.description}</p>
+                  <span className="text-3xl sm:text-4xl mb-2 sm:mb-3 block">{item.icon}</span>
+                  <h3 className="text-primary font-semibold mb-1 sm:mb-2 text-sm sm:text-base">{item.title}</h3>
+                  <p className="text-foreground-muted text-xs sm:text-sm">{item.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -107,13 +107,13 @@ export default function AboutSection() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
-            className="bg-background-card p-8 rounded-3xl border border-primary/20"
+            className="bg-background-card p-6 sm:p-8 rounded-2xl sm:rounded-3xl border border-primary/20"
           >
             {/* Profile Image with Animated Orb */}
-            <div className="relative w-52 h-52 mx-auto mb-8">
-              <AnimatedOrb className="absolute inset-[-20px] z-0" />
+            <div className="relative w-36 h-36 sm:w-44 sm:h-44 lg:w-52 lg:h-52 mx-auto mb-6 sm:mb-8">
+              <AnimatedOrb className="absolute inset-[-15px] sm:inset-[-20px] z-0" />
               <div className="relative z-10 w-full h-full rounded-full bg-background-dark flex items-center justify-center">
-                <svg className="w-24 h-24 text-primary" viewBox="0 0 200 200" fill="currentColor">
+                <svg className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 text-primary" viewBox="0 0 200 200" fill="currentColor">
                   <circle cx="100" cy="80" r="40" />
                   <path d="M100 130 C50 130 30 170 30 200 L170 200 C170 170 150 130 100 130Z" />
                 </svg>
@@ -121,14 +121,14 @@ export default function AboutSection() {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-4 text-center">
+            <div className="grid grid-cols-3 gap-2 sm:gap-4 text-center">
               {stats.map((stat) => (
                 <div key={stat.label} className="flex flex-col">
-                  <span className="font-display text-3xl font-bold text-primary">
+                  <span className="font-display text-xl sm:text-2xl lg:text-3xl font-bold text-primary">
                     <AnimatedCounter value={stat.value} inView={isInView} />
                     {stat.label === 'Hours Coding' && '+'}
                   </span>
-                  <span className="text-foreground-muted text-sm">{stat.label}</span>
+                  <span className="text-foreground-muted text-[10px] sm:text-xs lg:text-sm">{stat.label}</span>
                 </div>
               ))}
             </div>
