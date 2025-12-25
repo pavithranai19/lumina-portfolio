@@ -1,0 +1,122 @@
+import { useRef, useState } from 'react';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import DotGridBackground from './DotGridBackground';
+
+const certifications = [
+  {
+    icon: '🎓',
+    title: 'Deep Learning Specialization',
+    issuer: 'DeepLearning.AI',
+    date: '2024',
+    badge: 'Verified',
+  },
+  {
+    icon: '🏆',
+    title: 'Machine Learning',
+    issuer: 'Stanford University',
+    date: '2024',
+    badge: 'Verified',
+  },
+  {
+    icon: '🌟',
+    title: 'TensorFlow Developer',
+    issuer: 'Google',
+    date: '2024',
+    badge: 'Verified',
+  },
+];
+
+export default function CertificationsSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start start', 'end end'],
+  });
+
+  return (
+    <section id="certifications" className="relative min-h-screen bg-background-dark overflow-hidden">
+      {/* Dot Grid Background */}
+      <DotGridBackground />
+
+      <div className="container mx-auto px-6 py-24 relative z-10">
+        {/* Section Title */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="section-title"
+        >
+          <span className="section-title-number font-display">04.</span>
+          <h2 className="font-display">Certifications</h2>
+          <div className="section-title-line"></div>
+        </motion.div>
+
+        {/* Cards Container */}
+        <div ref={containerRef} className="relative mt-12">
+          <div className="space-y-8">
+            {certifications.map((cert, index) => (
+              <CertCard
+                key={cert.title}
+                cert={cert}
+                index={index}
+                scrollYProgress={scrollYProgress}
+                totalCards={certifications.length}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+interface CertCardProps {
+  cert: typeof certifications[0];
+  index: number;
+  scrollYProgress: any;
+  totalCards: number;
+}
+
+function CertCard({ cert, index, scrollYProgress, totalCards }: CertCardProps) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  
+  const yRange = [index / totalCards, (index + 1) / totalCards];
+  const scale = useTransform(scrollYProgress, yRange, [1, 0.95]);
+  const opacity = useTransform(scrollYProgress, yRange, [1, 0.8]);
+  
+  const smoothScale = useSpring(scale, { stiffness: 100, damping: 30 });
+  const smoothOpacity = useSpring(opacity, { stiffness: 100, damping: 30 });
+
+  return (
+    <motion.div
+      ref={cardRef}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: index * 0.15 }}
+      viewport={{ once: true }}
+      style={{
+        scale: smoothScale,
+        opacity: smoothOpacity,
+      }}
+      className="cert-card h-80 w-full p-8 bg-background-card rounded-[40px] border border-primary/10 shadow-lg backdrop-blur-sm"
+    >
+      <div className="flex flex-col md:flex-row md:items-center gap-6">
+        {/* Icon */}
+        <span className="text-5xl">{cert.icon}</span>
+
+        {/* Content */}
+        <div className="flex-1">
+          <h3 className="text-xl font-semibold text-foreground mb-2">
+            {cert.title}
+          </h3>
+          <p className="text-primary font-semibold mb-1">{cert.issuer}</p>
+          <p className="text-foreground-muted text-sm mb-4">{cert.date}</p>
+          <span className="inline-block px-4 py-2 bg-primary/20 text-primary text-sm font-semibold rounded-full border border-primary">
+            {cert.badge}
+          </span>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
