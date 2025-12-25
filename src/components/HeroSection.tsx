@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Github, Linkedin, ExternalLink } from 'lucide-react';
-import GalaxyBackground from './GalaxyBackground';
+import HomeGalaxyBackground from './HomeGalaxyBackground';
 import RotatingCube from './RotatingCube';
 
 export default function HeroSection() {
@@ -34,8 +34,21 @@ export default function HeroSection() {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background */}
-      <GalaxyBackground className="z-0 opacity-80" />
+      {/* Background - HomeGalaxy */}
+      <HomeGalaxyBackground 
+        className="z-0" 
+        focal={[0.5, 0.5]}
+        starSpeed={0.5}
+        density={6.0}
+        hueShift={200}
+        speed={1.0}
+        glowIntensity={4.0}
+        saturation={3.0}
+        mouseRepulsion={true}
+        repulsionStrength={4.0}
+        twinkleIntensity={1.0}
+        rotationSpeed={0.1}
+      />
       
       {/* Content */}
       <div className="container mx-auto px-6 py-32 relative z-10">
