@@ -1,6 +1,6 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
-import DotGridBackground from './DotGridBackground';
+import GridScanBackground from './GridScanBackground';
 
 const certifications = [
   {
@@ -35,8 +35,21 @@ export default function CertificationsSection() {
 
   return (
     <section id="certifications" className="relative min-h-screen bg-background-dark overflow-hidden">
-      {/* Dot Grid Background */}
-      <DotGridBackground />
+      {/* GridScan Background */}
+      <GridScanBackground 
+        linesColor="#00d4ff"
+        scanColor="#FF9FFC"
+        gridScale={0.12}
+        lineThickness={1.2}
+        scanOpacity={0.5}
+        scanGlow={0.6}
+        scanSoftness={2.5}
+        scanDuration={2.5}
+        scanDelay={1.5}
+        noiseIntensity={0.015}
+        bloomIntensity={0.3}
+        scanOnClick={true}
+      />
 
       <div className="container mx-auto px-6 py-24 relative z-10">
         {/* Section Title */}
