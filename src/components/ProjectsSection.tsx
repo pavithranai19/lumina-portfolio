@@ -34,23 +34,23 @@ const projects = [
 
 export default function ProjectsSection() {
   return (
-    <section id="projects" className="relative py-24 bg-background">
-      <div className="container mx-auto px-6">
+    <section id="projects" className="relative py-16 sm:py-20 lg:py-24 bg-background">
+      <div className="container mx-auto px-4 sm:px-6">
         {/* Section Title */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="section-title"
+          className="section-title flex-col sm:flex-row"
         >
-          <span className="section-title-number font-display">02.</span>
-          <h2 className="font-display">Featured Projects</h2>
-          <div className="section-title-line"></div>
+          <span className="section-title-number font-display text-lg sm:text-xl lg:text-2xl">02.</span>
+          <h2 className="font-display text-xl sm:text-2xl lg:text-3xl">Featured Projects</h2>
+          <div className="section-title-line hidden sm:block"></div>
         </motion.div>
 
         {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {projects.map((project, index) => (
             <ProjectCard key={project.title} project={project} index={index} />
           ))}
@@ -74,9 +74,11 @@ function ProjectCard({ project, index }: ProjectCardProps) {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
       viewport={{ once: true }}
-      className="project-card group relative min-h-[350px] bg-background-card rounded-3xl border-2 border-primary/20 overflow-hidden cursor-pointer"
+      className="project-card group relative min-h-[280px] sm:min-h-[320px] lg:min-h-[350px] bg-background-card rounded-2xl sm:rounded-3xl border-2 border-primary/20 overflow-hidden cursor-pointer"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onTouchStart={() => setIsHovered(true)}
+      onTouchEnd={() => setTimeout(() => setIsHovered(false), 2000)}
     >
       {/* Background Image */}
       <div
@@ -87,11 +89,11 @@ function ProjectCard({ project, index }: ProjectCardProps) {
       />
 
       {/* Tags */}
-      <div className={`absolute top-4 right-4 flex flex-wrap gap-2 transition-all duration-300 z-10 ${isHovered ? 'opacity-0 -translate-y-4' : 'opacity-100'}`}>
+      <div className={`absolute top-3 sm:top-4 right-3 sm:right-4 flex flex-wrap gap-1.5 sm:gap-2 transition-all duration-300 z-10 ${isHovered ? 'opacity-0 -translate-y-4' : 'opacity-100'}`}>
         {project.tags.map((tag) => (
           <span
             key={tag}
-            className="px-3 py-1 bg-primary/20 text-primary text-xs font-semibold rounded-full border border-primary backdrop-blur-sm"
+            className="px-2 sm:px-3 py-0.5 sm:py-1 bg-primary/20 text-primary text-[10px] sm:text-xs font-semibold rounded-full border border-primary backdrop-blur-sm"
           >
             {tag}
           </span>
@@ -99,28 +101,28 @@ function ProjectCard({ project, index }: ProjectCardProps) {
       </div>
 
       {/* Title */}
-      <h3 className={`absolute inset-0 flex items-center justify-center text-xl font-semibold tracking-wider transition-all duration-500 z-10 ${isHovered ? 'opacity-0 scale-75' : 'opacity-100 scale-100'}`}>
+      <h3 className={`absolute inset-0 flex items-center justify-center text-base sm:text-lg lg:text-xl font-semibold tracking-wider transition-all duration-500 z-10 px-4 text-center ${isHovered ? 'opacity-0 scale-75' : 'opacity-100 scale-100'}`}>
         {project.title}
       </h3>
 
       {/* Interactive Boxes */}
       <a
         href={project.demo}
-        className={`absolute w-[60%] h-[60%] bg-foreground/15 backdrop-blur-md border-t-2 border-r border-primary/50 rounded-tr-[75%] flex items-center justify-center gap-2 text-foreground font-semibold transition-all duration-700 hover:bg-gradient-to-br hover:from-primary hover:to-accent hover:opacity-90 z-20
+        className={`absolute w-[60%] h-[60%] bg-foreground/15 backdrop-blur-md border-t-2 border-r border-primary/50 rounded-tr-[75%] flex items-center justify-center gap-1.5 sm:gap-2 text-foreground font-semibold text-sm sm:text-base transition-all duration-700 hover:bg-gradient-to-br hover:from-primary hover:to-accent hover:opacity-90 z-20
           ${isHovered ? '-bottom-px -left-px' : '-bottom-[60%] -left-[60%]'}`}
         style={{ boxShadow: '0 0 30px hsla(190, 100%, 50%, 0.3)' }}
       >
-        <ExternalLink size={20} />
+        <ExternalLink size={16} className="sm:w-5 sm:h-5" />
         Demo
       </a>
 
       <a
         href={project.code}
-        className={`absolute w-[40%] h-[40%] bg-foreground/15 backdrop-blur-md border-t-2 border-r border-primary/30 rounded-tr-[75%] flex items-center justify-center gap-2 text-foreground font-semibold transition-all duration-700 delay-100 hover:bg-gradient-to-br hover:from-accent hover:to-secondary hover:opacity-90 z-20
+        className={`absolute w-[40%] h-[40%] bg-foreground/15 backdrop-blur-md border-t-2 border-r border-primary/30 rounded-tr-[75%] flex items-center justify-center gap-1.5 sm:gap-2 text-foreground font-semibold text-sm sm:text-base transition-all duration-700 delay-100 hover:bg-gradient-to-br hover:from-accent hover:to-secondary hover:opacity-90 z-20
           ${isHovered ? '-bottom-px -left-px' : '-bottom-[40%] -left-[40%]'}`}
         style={{ boxShadow: '0 0 30px hsla(190, 100%, 50%, 0.3)' }}
       >
-        <Code size={18} />
+        <Code size={14} className="sm:w-[18px] sm:h-[18px]" />
         Code
       </a>
 
@@ -130,8 +132,8 @@ function ProjectCard({ project, index }: ProjectCardProps) {
       />
 
       {/* Description */}
-      <div className={`absolute bottom-0 left-0 right-0 p-6 z-10 transition-all duration-500 delay-200 ${isHovered ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
-        <p className="text-foreground-secondary text-sm leading-relaxed">
+      <div className={`absolute bottom-0 left-0 right-0 p-4 sm:p-6 z-10 transition-all duration-500 delay-200 ${isHovered ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+        <p className="text-foreground-secondary text-xs sm:text-sm leading-relaxed">
           {project.description}
         </p>
       </div>

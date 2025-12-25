@@ -54,23 +54,23 @@ export default function Navbar() {
           : 'bg-background/80 backdrop-blur-md border-b border-primary/5'
       }`}
     >
-      <div className="container mx-auto px-6 py-4">
+      <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <a href="#home" onClick={(e) => handleNavClick(e, '#home')} className="flex items-center gap-1 font-display text-2xl font-bold">
+          <a href="#home" onClick={(e) => handleNavClick(e, '#home')} className="flex items-center gap-1 font-display text-xl sm:text-2xl font-bold">
             <span className="text-primary">&lt;</span>
             <span className="gradient-text">PG</span>
             <span className="text-primary">/&gt;</span>
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-4 lg:gap-8">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className={`nav-link ${activeSection === link.href.slice(1) ? 'active text-primary' : ''}`}
+                className={`nav-link text-sm lg:text-base ${activeSection === link.href.slice(1) ? 'active text-primary' : ''}`}
               >
                 {link.label}
               </a>
@@ -83,20 +83,20 @@ export default function Navbar() {
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 border-t border-primary/10 pt-4 animate-fade-in">
-            <div className="flex flex-col gap-4">
+          <div className="md:hidden mt-3 pb-4 border-t border-primary/10 pt-4 animate-fade-in">
+            <div className="flex flex-col gap-3">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className={`nav-link text-lg ${activeSection === link.href.slice(1) ? 'active text-primary' : ''}`}
+                  className={`nav-link text-base py-2 ${activeSection === link.href.slice(1) ? 'active text-primary' : ''}`}
                 >
                   {link.label}
                 </a>

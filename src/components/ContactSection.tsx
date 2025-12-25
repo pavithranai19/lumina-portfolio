@@ -46,47 +46,47 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="relative py-24 bg-background overflow-hidden">
+    <section id="contact" className="relative py-16 sm:py-20 lg:py-24 bg-background overflow-hidden">
       {/* Background */}
       <GalaxyBackground className="z-0 opacity-60" />
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         {/* Section Title */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="section-title"
+          className="section-title flex-col sm:flex-row"
         >
-          <span className="section-title-number font-display">05.</span>
-          <h2 className="font-display">Get In Touch</h2>
-          <div className="section-title-line"></div>
+          <span className="section-title-number font-display text-lg sm:text-xl lg:text-2xl">05.</span>
+          <h2 className="font-display text-xl sm:text-2xl lg:text-3xl">Get In Touch</h2>
+          <div className="section-title-line hidden sm:block"></div>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16">
           {/* Left Column - Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="space-y-8"
+            className="space-y-6 sm:space-y-8"
           >
-            <h3 className="text-3xl font-bold gradient-text">Let's Connect!</h3>
-            <p className="text-foreground-secondary leading-relaxed text-lg">
+            <h3 className="text-2xl sm:text-3xl font-bold gradient-text">Let's Connect!</h3>
+            <p className="text-foreground-secondary leading-relaxed text-sm sm:text-base lg:text-lg">
               I'm currently looking for opportunities in AI and Machine Learning. Whether you have a question or just want to say hi, feel free to reach out!
             </p>
 
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               {contactInfo.map((item) => (
-                <div key={item.label} className="space-y-1">
-                  <h4 className="text-primary font-medium">{item.label}</h4>
+                <div key={item.label} className="space-y-0.5 sm:space-y-1">
+                  <h4 className="text-primary font-medium text-sm sm:text-base">{item.label}</h4>
                   <a
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-foreground-secondary hover:text-primary transition-colors"
+                    className="text-foreground-secondary hover:text-primary transition-colors text-sm sm:text-base break-all"
                   >
                     {item.value}
                   </a>
@@ -101,9 +101,9 @@ export default function ContactSection() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
-            className="bg-background-card p-8 rounded-2xl border border-primary/10"
+            className="bg-background-card p-4 sm:p-6 lg:p-8 rounded-xl sm:rounded-2xl border border-primary/10"
           >
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
               {/* Name */}
               <div className="floating-label-group">
                 <input
@@ -111,12 +111,12 @@ export default function ContactSection() {
                   name="name"
                   value={formState.name}
                   onChange={handleChange}
-                  className="floating-input"
+                  className="floating-input text-sm sm:text-base"
                   placeholder=" "
                   required
                   autoComplete="off"
                 />
-                <label className="floating-label">Your Name</label>
+                <label className="floating-label text-sm sm:text-base">Your Name</label>
               </div>
 
               {/* Email */}
@@ -126,12 +126,12 @@ export default function ContactSection() {
                   name="email"
                   value={formState.email}
                   onChange={handleChange}
-                  className="floating-input"
+                  className="floating-input text-sm sm:text-base"
                   placeholder=" "
                   required
                   autoComplete="off"
                 />
-                <label className="floating-label">Your Email</label>
+                <label className="floating-label text-sm sm:text-base">Your Email</label>
               </div>
 
               {/* Subject */}
@@ -141,12 +141,12 @@ export default function ContactSection() {
                   name="subject"
                   value={formState.subject}
                   onChange={handleChange}
-                  className="floating-input"
+                  className="floating-input text-sm sm:text-base"
                   placeholder=" "
                   required
                   autoComplete="off"
                 />
-                <label className="floating-label">Subject</label>
+                <label className="floating-label text-sm sm:text-base">Subject</label>
               </div>
 
               {/* Message */}
@@ -155,20 +155,20 @@ export default function ContactSection() {
                   name="message"
                   value={formState.message}
                   onChange={handleChange}
-                  className="floating-input min-h-[120px] resize-y"
+                  className="floating-input min-h-[100px] sm:min-h-[120px] resize-y text-sm sm:text-base"
                   placeholder=" "
                   rows={5}
                   required
                   autoComplete="off"
                 />
-                <label className="floating-label">Your Message</label>
+                <label className="floating-label text-sm sm:text-base">Your Message</label>
               </div>
 
               {/* Submit Button */}
               <button
                 type="submit"
                 disabled={isSubmitting || isSubmitted}
-                className={`w-full py-4 px-8 rounded-lg font-semibold flex items-center justify-center gap-2 transition-all duration-300 ${
+                className={`w-full py-3 sm:py-4 px-6 sm:px-8 rounded-lg font-semibold flex items-center justify-center gap-2 transition-all duration-300 text-sm sm:text-base ${
                   isSubmitted
                     ? 'bg-gradient-to-r from-green-400 to-primary text-background'
                     : 'btn-primary'
@@ -176,17 +176,17 @@ export default function ContactSection() {
               >
                 {isSubmitted ? (
                   <>
-                    <CheckCircle size={20} />
+                    <CheckCircle size={18} className="sm:w-5 sm:h-5" />
                     Message Sent! ✓
                   </>
                 ) : isSubmitting ? (
                   <>
-                    <div className="w-5 h-5 border-2 border-background border-t-transparent rounded-full animate-spin" />
+                    <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-background border-t-transparent rounded-full animate-spin" />
                     Sending...
                   </>
                 ) : (
                   <>
-                    <Send size={20} />
+                    <Send size={18} className="sm:w-5 sm:h-5" />
                     Send Message
                   </>
                 )}
